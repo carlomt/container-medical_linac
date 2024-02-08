@@ -6,7 +6,6 @@ From: carlomt/geant4:11.1.0-almalinux9
 	curl https://gitlab.cern.ch/geant4/geant4/-/archive/geant4-11.2-release/geant4-master.tar.gz?path=examples/advanced/medical_linac --output /workspace/medical_linac.tar.gz && \
 	mkdir -p /workspace/source
 	tar xf /workspace/medical_linac.tar.gz --strip-components 4 -C /workspace/source && \
-	mkdir -p /workspace/build && \
 	cd /workspace/ && \
 	cmake \
 	-G Ninja \
