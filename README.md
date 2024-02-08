@@ -1,5 +1,8 @@
 # medical_linac Apptainer file to create a container
 
+This README assumes that exists a directory on the host where the container will find (and in case write) the Geant4 datasets, this directory will be identified with  <PATH TO GEANT4 DATA DIR> in the following.
+The macro file to run the code should be in the folder where the container is executed and the output will be stored in the same directury.
+
 ## Compile
 
 To compile the container:
