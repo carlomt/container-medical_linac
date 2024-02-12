@@ -1,5 +1,5 @@
 Bootstrap: docker
-From: carlomt/geant4:11.1.0-almalinux9
+From: carlomt/geant4:11.1.0-centos7
 
 %post
 	mkdir -p /workspace
@@ -8,9 +8,8 @@ From: carlomt/geant4:11.1.0-almalinux9
 	tar xf /workspace/medical_linac.tar.gz --strip-components 4 -C /workspace/source && \
 	cd /workspace/ && \
 	cmake \
-	-G Ninja \
 	/workspace/source && \
-	ninja && \
+	make -j`nproc` \
 	echo /workspace/medical_linac > /usr/local/bin/run && \
 	chmod +x /usr/local/bin/run
 	

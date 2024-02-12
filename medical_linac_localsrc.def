@@ -6,8 +6,8 @@ From: carlomt/geant4:11.1.0-almalinux9
 
 %post
 	cd /workspace/ && \
-	cmake -G Ninja /workspace/source && \
-	ninja && \
+	cmake /workspace/source && \
+	make -j`nproc` && \
 	echo /workspace/medical_linac > /usr/local/bin/run && \
 	chmod +x /usr/local/bin/run
 	
