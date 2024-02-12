@@ -2,14 +2,15 @@ Bootstrap: docker
 From: carlomt/geant4:11.1.0-centos7
 
 %post
+	rm -f /opt/geant4/lib64/cmake/Geant4/Geant4PackageCache.cmake && \
+	source /opt/rh/devtoolset-9/enable && \
 	mkdir -p /workspace
 	curl https://gitlab.cern.ch/geant4/geant4/-/archive/geant4-11.2-release/geant4-master.tar.gz?path=examples/advanced/medical_linac --output /workspace/medical_linac.tar.gz && \
 	mkdir -p /workspace/source
 	tar xf /workspace/medical_linac.tar.gz --strip-components 4 -C /workspace/source && \
 	cd /workspace/ && \
-	cmake \
-	/workspace/source && \
-	make -j`nproc` \
+	cmake /workspace/source && \
+	make -j`nproc` && \
 	echo /workspace/medical_linac > /usr/local/bin/run && \
 	chmod +x /usr/local/bin/run
 	
