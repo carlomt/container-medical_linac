@@ -1,5 +1,5 @@
 Bootstrap: docker
-From: carlomt/geant4:11.1.0-centos7
+From: carlomt/geant4:11.2.1-centos7
 
 %post
 	rm -f /opt/geant4/lib64/cmake/Geant4/Geant4PackageCache.cmake && \
