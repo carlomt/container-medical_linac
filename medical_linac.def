@@ -1,3 +1,4 @@
+#starting from a Docker container with Geant4 already installed
 Bootstrap: docker
 From: carlomt/geant4:11.2.1-centos7
 
