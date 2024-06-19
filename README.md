@@ -4,7 +4,7 @@ This README assumes that exists a directory on the host where the container will
 The macro file to run the code should be in the folder where the container is executed and the output will be stored in the same directury.
 
 ## Pull the image
-You can download (pull) the apptainer image of this application direclty with:
+You can pull (download) the apptainer image of this application produced by CI with:
 ```bash
 apptainer pull oras://ghcr.io/carlomt/container-medical_linac:latest
 ```
