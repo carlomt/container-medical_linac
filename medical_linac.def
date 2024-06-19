@@ -15,7 +15,8 @@ From: carlomt/geant4:11.2.1-centos7
     mkdir -p /workspace
     
     # Download the medical_linac example from the Geant4 repository
-    curl https://gitlab.cern.ch/geant4/geant4/-/archive/geant4-11.2-release/geant4-master.tar.gz?path=examples/advanced/medical_linac --output /workspace/medical_linac.tar.gz
+    #curl https://gitlab.cern.ch/geant4/geant4/-/archive/geant4-11.2-release/geant4-master.tar.gz?path=examples/advanced/medical_linac --output /workspace/medical_linac.tar.gz
+    curl https://github.com/Geant4/geant4/-/archive/geant4-11.2-release/geant4-master.tar.gz?path=examples/advanced/medical_linac --output /workspace/medical_linac.tar.gz
     
     # Prepare source directory
     mkdir -p /workspace/source
