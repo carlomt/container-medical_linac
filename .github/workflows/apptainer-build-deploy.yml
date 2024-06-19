@@ -13,7 +13,8 @@ jobs:
       packages: write
 
     container:
-        image: quay.io/singularity/singularity:v4.1.0
+        #image: quay.io/singularity/singularity:v4.1.0
+        image: carlomt/apptainer:1.3.2
         options: --privileged
 
     name: Build Container
