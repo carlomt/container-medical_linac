@@ -18,13 +18,17 @@ apptainer build medical_linac.sif medical_linac.def
 ```
 
 ## Check and download Geant4 datasets
+To keep the size of the container images limited, the Geant4 datasets are not installed. They are expect to be found in
+`/opt/geant4/data`
+I suggest you to map a folder in the host to use always the same dataset with the option:
+`--bind <PATH TO GEANT4 DATA DIR>:/opt/geant4/data`
 
 To check the installed datasets:
 ```bash
 apptainer exec --bind <PATH TO GEANT4 DATA DIR>:/opt/geant4/data medical_linac.sif /opt/geant4/bin/geant4-config --check-datasets
 ```
 
-To install missing datasets:
+If some, or all, are missing it is possible to install the datasets using the container with:
 ```bash
 apptainer exec --bind <PATH TO GEANT4 DATA DIR>:/opt/geant4/data medical_linac.sif /opt/geant4/bin/geant4-config --install-datasets
 ```
@@ -35,8 +39,8 @@ apptainer exec --bind <PATH TO GEANT4 DATA DIR>:/opt/geant4/data medical_linac.s
 apptainer shell --bind <PATH TO GEANT4 DATA DIR>:/opt/geant4/data medical_linac.sif
 ```
 
-## Run
+## Run in batch
 
-```
+```bash
 apptainer exec --bind <PATH TO GEANT4 DATA DIR>:/opt/geant4/data medical_linac.sif run <MACRO FILE>
 ```
