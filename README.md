@@ -33,7 +33,7 @@ If some, or all, are missing it is possible to install the datasets using the co
 apptainer exec --bind <PATH TO GEANT4 DATA DIR>:/opt/geant4/data medical_linac.sif /opt/geant4/bin/geant4-config --install-datasets
 ```
 
-## Run in interactive mode:
+## Run in interactive mode
 
 ```bash
 apptainer shell --bind <PATH TO GEANT4 DATA DIR>:/opt/geant4/data medical_linac.sif
@@ -43,4 +43,9 @@ apptainer shell --bind <PATH TO GEANT4 DATA DIR>:/opt/geant4/data medical_linac.
 
 ```bash
 apptainer exec --bind <PATH TO GEANT4 DATA DIR>:/opt/geant4/data medical_linac.sif run <MACRO FILE>
+```
+
+If you pulled the container from this repository its name is: `container-medical_linac_latest.sif`, therefore to run it:
+```bash
+apptainer exec --bind <PATH TO GEANT4 DATA DIR>:/opt/geant4/data container-medical_linac_latest.sif run <MACRO FILE>
 ```
