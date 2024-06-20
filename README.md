@@ -49,3 +49,20 @@ If you pulled the container from this repository its name is: `container-medical
 ```bash
 apptainer exec --bind <PATH TO GEANT4 DATA DIR>:/opt/geant4/data container-medical_linac_latest.sif run <MACRO FILE>
 ```
+
+## Minimal commands to run
+```bash
+apptainer pull oras://ghcr.io/carlomt/container-medical_linac:latest
+```
+```bash
+mkdir ./g4datasets
+```
+```bash
+apptainer exec --bind ./g4datasets:/opt/geant4/data medical_linac.sif /opt/geant4/bin/geant4-config --install-datasets
+```
+```bash
+wget https://raw.githubusercontent.com/Geant4/geant4/master/examples/advanced/medical_linac/run.mac
+```
+```bash
+apptainer exec --bind ./g4datasets:/opt/geant4/data medical_linac.sif run run.mac
+```
