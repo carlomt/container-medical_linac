@@ -58,11 +58,11 @@ apptainer pull oras://ghcr.io/carlomt/container-medical_linac:latest
 mkdir ./g4datasets
 ```
 ```bash
-apptainer exec --bind ./g4datasets:/opt/geant4/data medical_linac.sif /opt/geant4/bin/geant4-config --install-datasets
+apptainer exec --bind ./g4datasets:/opt/geant4/data container-medical_linac_latest.sif /opt/geant4/bin/geant4-config --install-datasets
 ```
 ```bash
 wget https://raw.githubusercontent.com/Geant4/geant4/master/examples/advanced/medical_linac/run.mac
 ```
 ```bash
-apptainer exec --bind ./g4datasets:/opt/geant4/data medical_linac.sif run run.mac
+apptainer exec --bind ./g4datasets:/opt/geant4/data container-medical_linac_latest.sif run run.mac
 ```
