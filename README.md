@@ -51,18 +51,23 @@ apptainer exec --bind <PATH TO GEANT4 DATA DIR>:/opt/geant4/data container-medic
 ```
 
 ## Minimal commands to run
+
+* Download the container image
 ```bash
 apptainer pull oras://ghcr.io/carlomt/container-medical_linac:latest
 ```
+* Create a folder for the Geant4 datasets and download them, if you have already the Geant4 datasets you can skip these steps and substitute ./g4datasets with the path where you have the datasets in the last command
 ```bash
 mkdir ./g4datasets
 ```
 ```bash
 apptainer exec --bind ./g4datasets:/opt/geant4/data container-medical_linac_latest.sif /opt/geant4/bin/geant4-config --install-datasets
 ```
+* Download a macro
 ```bash
 wget https://raw.githubusercontent.com/carlomt/container-medical_linac/main/testrun.mac
 ```
+* Launch the simulation
 ```bash
 apptainer exec --bind ./g4datasets:/opt/geant4/data container-medical_linac_latest.sif run testrun.mac
 ```
