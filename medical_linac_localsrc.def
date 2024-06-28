@@ -26,7 +26,12 @@ From: carlomt/geant4:11.2.1-centos7
     make -j$(nproc)
     
     # Create a simple run script and make it executable
-    echo "/workspace/medical_linac" > /usr/local/bin/run
+    echo "#!/bin/bash" > /usr/local/bin/run
+    echo "if [ -z \"\$1\" ]; then" >> /usr/local/bin/run
+    echo "    echo 'Usage: run <input_file>'" >> /usr/local/bin/run
+    echo "    exit 1" >> /usr/local/bin/run
+    echo "fi" >> /usr/local/bin/run
+    echo "/workspace/medical_linac \$1" >> /usr/local/bin/run
     chmod +x /usr/local/bin/run
 
 %environment
