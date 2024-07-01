@@ -56,7 +56,7 @@ apptainer exec --bind <PATH TO GEANT4 DATA DIR>:/opt/geant4/data container-medic
 ```bash
 apptainer pull oras://ghcr.io/carlomt/container-medical_linac:latest
 ```
-* Create a folder for the Geant4 datasets and download them, if you have already the Geant4 datasets you can skip these steps and substitute ./g4datasets with the path where you have the datasets in the last command
+* Create a folder for the Geant4 datasets and download them, if you have already the Geant4 datasets you can skip these steps and substitute `./g4datasets` in all the subsequent commands with the path where you have the datasets
 ```bash
 mkdir ./g4datasets
 ```
