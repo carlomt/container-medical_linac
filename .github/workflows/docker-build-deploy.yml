@@ -37,6 +37,6 @@ jobs:
 
       - name: Push Docker Image to ORAS registry
         run: |
-          oras push ghcr.io/${{ github.repository }}:latest-docker \
-          medical_linac.tar:application/vnd.docker.image.rootfs.diff.tar.gzip
-
+	      oras push ghcr.io/${{ github.repository }}:latest-docker \
+              medical_linac.tar:application/vnd.docker.image.rootfs.diff.tar.gzip \
+              --manifest-config config.json:application/vnd.docker.container.image.v1+json
