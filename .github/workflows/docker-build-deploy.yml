@@ -1,4 +1,4 @@
-name: Docker Build and Deploy with ORAS
+name: Docker Build Deploy
 
 on:
   pull_request:
@@ -12,7 +12,7 @@ jobs:
       contents: read
       packages: write
 
-    name: Build and Push Docker Container with ORAS
+    name: Build and Push Docker Container
     steps:
       - name: Check out code for the container builds
         uses: actions/checkout@v4
@@ -20,23 +20,13 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
+      - name: Log in to GitHub Container Registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ secrets.GHCR_USERNAME }} --password-stdin
+
       - name: Build Docker Image
         run: |
-          docker build -t medical_linac:latest .
-
-      - name: Save Docker Image to Tarball
+          docker build -t ghcr.io/${{ github.repository }}:${{ github.sha }} .
+      
+      - name: Push Docker Image to GitHub Container Registry
         run: |
-          docker save medical_linac:latest -o medical_linac.tar
-
-      - name: Log in to GitHub Container Registry
-        run: echo "${{ secrets.GITHUB_TOKEN }}" | oras login ghcr.io -u ${{ secrets.GHCR_USERNAME }} --password-stdin
-
-      - name: Install ORAS CLI
-        run: |
-          curl -sSL https://github.com/oras-project/oras/releases/download/v0.15.0/oras_0.15.0_linux_amd64.tar.gz | tar -xzv oras && sudo mv oras /usr/local/bin/
-
-      - name: Push Docker Image to ORAS registry
-        run: |
-              oras push ghcr.io/${{ github.repository }}:latest-docker \
-              medical_linac.tar:application/vnd.docker.image.rootfs.diff.tar.gzip \
-              --manifest-config config.json:application/vnd.docker.container.image.v1+json
+          docker push ghcr.io/${{ github.repository }}:${{ github.sha }}
