@@ -28,6 +28,9 @@ jobs:
         run: |
           docker save medical_linac:latest -o medical_linac.tar
           mkdir -p extracted && tar -xvf medical_linac.tar -C extracted
+
+      - name: Check the extracted files
+        run: |
           ls -R extracted  # Check the extracted files
 
       - name: Log in to GitHub Container Registry using ORAS
