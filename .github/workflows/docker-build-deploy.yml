@@ -28,9 +28,6 @@ jobs:
         run: |
           docker save medical_linac:latest -o medical_linac.tar
           mkdir -p extracted && tar -xvf medical_linac.tar -C extracted
-
-      - name: Check the extracted files
-        run: |
           ls -R extracted  # Check the extracted files
 
       - name: Log in to GitHub Container Registry using ORAS
@@ -42,7 +39,8 @@ jobs:
 
       - name: Push Docker Image to ORAS registry
         run: |
-          # Adjust the following paths based on the output from 'ls -R extracted'
+          # Using extracted/oci-layout, extracted/index.json, and blobs for push
           oras push ghcr.io/${{ github.repository }}:latest-docker \
-          extracted/layer.tar:application/vnd.docker.image.rootfs.diff.tar.gzip \
-          extracted/config.json:application/vnd.docker.container.image.v1+json
+            extracted/index.json:application/vnd.oci.image.index.v1+json \
+            extracted/blobs/sha256/*:application/vnd.oci.image.layer.v1.tar+gzip \
+            extracted/manifest.json:application/vnd.docker.distribution.manifest.v2+json
