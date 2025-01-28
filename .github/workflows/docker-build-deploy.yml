@@ -31,9 +31,6 @@ jobs:
           mkdir -p extracted && tar -xvf medical_linac.tar -C extracted
           ls -R extracted  # Check the extracted files
 
-      - name: List extracted files
-        run: ls -R extracted/blobs/sha256/
-
       - name: Install ORAS CLI
         run: |
           curl -sSL https://github.com/oras-project/oras/releases/download/v0.15.0/oras_0.15.0_linux_amd64.tar.gz | tar -xzv oras && sudo mv oras /usr/local/bin/
