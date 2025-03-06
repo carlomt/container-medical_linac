@@ -71,3 +71,7 @@ wget https://raw.githubusercontent.com/carlomt/container-medical_linac/main/test
 ```bash
 apptainer exec --bind ./g4datasets:/opt/geant4/data container-medical_linac_latest.sif run testrun.mac
 ```
+
+## Singularity
+
+Singularity and Apptainer share a common origin and many core functionalities. Apptainer, born as a Singularity fork, is the community-maintained successor of the original Singularity project, aiming to preserve open-source principles and community governance
